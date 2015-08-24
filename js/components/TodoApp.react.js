@@ -1,6 +1,7 @@
 var React = require('react');
 var TodoStore = require('../stores/TodoStore');
 var TodoItem = require('./TodoItem.react');
+var TodoTextInput = require('./TodoTextInput.react');
 
 function getTodoState() {
     return {
@@ -9,6 +10,14 @@ function getTodoState() {
 }
 
 var TodoApp = React.createClass({
+    componentDidMount: function() {
+        TodoStore.addChangeListener(this._onChange);
+    },
+
+    componentWillUnmount: function() {
+        TodoStore.removeChangeListener(this._onChange);
+    },
+
     getInitialState: function () {
         return getTodoState();
     },
@@ -19,8 +28,15 @@ var TodoApp = React.createClass({
         });
 
         return (
-            <div>{todoItems}</div>
+            <div>
+                <TodoTextInput />
+                <div>{todoItems}</div>
+            </div>
         )
+    },
+
+    _onChange: function() {
+        this.setState(getTodoState());
     }
 });
 

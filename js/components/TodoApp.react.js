@@ -1,5 +1,6 @@
 var React = require('react');
 var TodoStore = require('../stores/TodoStore');
+var TodoItem = require('./TodoItem.react');
 
 function getTodoState() {
     return {
@@ -14,8 +15,9 @@ var TodoApp = React.createClass({
 
     render: function () {
         var todoItems = this.state.allTodos.map(function(todoItem) {
-           return <div key={todoItem.id}>{todoItem.text}</div>
+           return <TodoItem key={todoItem.id} todoItem={todoItem} />;
         });
+
         return (
             <div>{todoItems}</div>
         )

@@ -1,2 +1,4 @@
 js/bundle.js
+spec/bundle.js
+spec/bundle.js.map
 node_modules

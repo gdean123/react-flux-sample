@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "watchify -o js/bundle.js -v -d js/app.js",
-    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js"
+    "start:test": "watchify -o spec/bundle.js -v -d spec/specRunner.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "test": "./node_modules/.bin/gulp jasmine"
   },
   "browserify": {
     "transform": [
@@ -14,8 +16,11 @@
   "devDependencies": {
     "browserify": "^11.0.1",
     "envify": "^0.2.0",
+    "gulp": "^3.9.0",
+    "gulp-jasmine-browser": "^0.2.3",
+    "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.5",
     "reactify": "^1.1.1",
-    "uglify-js": "^2.4.24",
     "watchify": "^3.3.1"
   },
   "dependencies": {

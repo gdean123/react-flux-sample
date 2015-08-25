@@ -18,11 +18,11 @@ var TodoApp = React.createClass({
         TodoStore.removeChangeListener(this._onChange);
     },
 
-    getInitialState: function () {
+    getInitialState: function() {
         return getTodoState();
     },
 
-    render: function () {
+    render: function() {
         var todoItems = this.state.allTodos.map(function(todoItem) {
            return <TodoItem key={todoItem.id} todoItem={todoItem} />;
         });
